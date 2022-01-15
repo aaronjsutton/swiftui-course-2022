@@ -31,7 +31,7 @@ struct HomeView: View {
           )
       }
       
-      Text("The time that leads to mastery is depdendent on the intensity of our focus")
+      Text("The time that leads to mastery is depdendent on the intensity of our focus.")
         .font(.title3)
         .fontWeight(.light)
         .foregroundColor(.secondary)
@@ -43,6 +43,7 @@ struct HomeView: View {
       Button(action: {
         withAnimation(Animation.easeOut(duration: 0.4)) {
           isOnboardinViewActive = true
+          playSound(sound: "success", type: "m4a")
         }
       }) {
         Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
