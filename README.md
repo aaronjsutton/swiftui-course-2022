@@ -10,7 +10,7 @@ repository controls the history for each example project.
 
 Sections 1 & 2 contain only reading materials and are omitted.
 
-- [ ] Section 3: Restart
+- [x] Section 3: Restart
 - [ ] Section 4: Pinch
 - [ ] Section 5: Fox Cars
 - [ ] Section 6: Fruits
