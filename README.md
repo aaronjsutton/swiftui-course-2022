@@ -11,8 +11,8 @@ repository controls the history for each example project.
 Sections 1 & 2 contain only reading materials and are omitted.
 
 - [x] Section 3: Restart
-- [ ] Section 4: Pinch
-- [ ] Section 5: Fox Cars
+- [x] Section 4: Pinch
+- [ ] Section 5: **Not Yet Available**
 - [ ] Section 6: Fruits
 - [ ] Section 7: Africa
 - [ ] Section 8: Touchdown
