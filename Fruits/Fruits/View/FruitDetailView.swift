@@ -51,11 +51,13 @@ struct FruitDetailView: View {
       }
       .edgesIgnoringSafeArea(.top)
     }
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 
 struct FruitDetailView_Previews: PreviewProvider {
   static var previews: some View {
     FruitDetailView(fruit: fruitsData[0])
+.previewInterfaceOrientation(.landscapeLeft)
   }
 }

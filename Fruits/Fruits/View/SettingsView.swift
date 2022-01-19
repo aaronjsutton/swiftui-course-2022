@@ -11,6 +11,8 @@ struct SettingsView: View {
   
   @Environment(\.presentationMode) var presentationMode
   
+  @AppStorage("isOnboarding") var isOnboarding: Bool = false
+  
   var body: some View {
     NavigationView {
       ScrollView(.vertical, showsIndicators: false){
@@ -33,6 +35,36 @@ struct SettingsView: View {
               Text("Most frutis are naturally low in fat, sodium, and calories. None have cholesterol. Fruits are sources of many essential nutrients, including potassium, dietary fiber, vitamins, and much more.")
                 .font(.footnote)
             }
+          }
+          
+          GroupBox(
+            label:
+              SettingsLabelView(labelText: "Customization", labelImage: "paintbrush")
+          ) {
+            Divider().padding(.vertical, 4)
+            
+            Text("If you wish, you can restart the application by toggling the switch in this box. That way, it starts the onboarding process over and you will see the welcome screen")
+              .padding(.vertical, 8)
+              .frame(minHeight: 60)
+              .layoutPriority(1)
+              .font(.footnote)
+              .multilineTextAlignment(.leading)
+            
+            Toggle(isOn: $isOnboarding) {
+              if isOnboarding {
+                Text("Restarted".uppercased())
+                  .fontWeight(.bold)
+                  .foregroundColor(Color.green)
+              } else {
+                Text("Restart".uppercased())
+                  .fontWeight(.bold)
+                  .foregroundColor(Color.secondary)
+              }
+            }
+            .padding()
+            .background(
+              Color(UIColor.tertiarySystemBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous)))
           }
           
           GroupBox(
@@ -67,6 +99,6 @@ struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView()
       .previewDevice("iPhone 11 Pro")
-      .preferredColorScheme(.dark)
+      
   }
 }
