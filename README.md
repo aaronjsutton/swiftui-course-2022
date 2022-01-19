@@ -13,7 +13,7 @@ Sections 1 & 2 contain only reading materials and are omitted.
 - [x] Section 3: Restart
 - [x] Section 4: Pinch
 - [ ] Section 5: **Not Yet Available**
-- [ ] Section 6: Fruits
+- [x] Section 6: Fruits
 - [ ] Section 7: Africa
 - [ ] Section 8: Touchdown
 - [ ] Section 9: Devote
