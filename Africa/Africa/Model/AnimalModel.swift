@@ -14,5 +14,6 @@ struct Animal: Codable, Identifiable {
 	let description: String
 	let link: String
 	let image: String
+	let fact: [String]
 	let gallery: [String]
 }

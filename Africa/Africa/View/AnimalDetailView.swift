@@ -14,10 +14,13 @@ struct AnimalDetailView: View {
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: false) {
 			VStack(alignment: .center, spacing: 20) {
+				
+				// HERO
 				Image(animal.image)
 					.resizable()
 					.scaledToFit()
 				
+				// NAME
 				Text(animal.name.uppercased())
 					.font(.largeTitle)
 					.fontWeight(.heavy)
@@ -30,18 +33,49 @@ struct AnimalDetailView: View {
 							.offset(y: 24)
 					)
 				
+				// HEADLINE
 				Text(animal.headline)
 					.font(.headline)
 					.multilineTextAlignment(.leading)
 					.foregroundColor(.accentColor)
 					.padding(.horizontal)
 				
+				// GALLERY
 				Group {
 					HeadingView(headingImage: "photo.on.rectangle.angled", headingText: "Wilderness in Pictures")
-					
 					InsetGalleryView(animal: animal)
 				}
+				.padding(.horizontal)
+				
+				// FACTS
+				Group {
+					HeadingView(headingImage: "questionmark.circle", headingText: "Did You Know?")
+					InsetFactView(animal: animal)
+				}
+				.padding(.horizontal)
+				
+				Group {
+					HeadingView(headingImage: "info.circle", headingText: "All about \(animal.name)")
+					Text(animal.description)
+						.multilineTextAlignment(.leading)
+						.layoutPriority(1)
+				}
+				.padding(.horizontal)
+				
+				// MINIMAP
+				Group {
+					HeadingView(headingImage: "map", headingText: "National Parks")
+					
+					InsetMapView()
+				}
+				.padding(.horizontal)
 			}
+			
+			Group {
+				HeadingView(headingImage: "books", headingText: "Learn More")
+				ExternalWeblinkView(animal: animal)
+			}
+			.padding(.horizontal)
 			.navigationBarTitle(Text("Learn about \(animal.name)"))
 			.navigationBarTitleDisplayMode(.inline)
 		}
