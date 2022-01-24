@@ -30,7 +30,7 @@ struct MainView: View {
       
       GalleryView()
         .tabItem {
-          Image(systemName: "photos")
+          Image(systemName: "photo")
           Text("Gallery")
         }
     }
