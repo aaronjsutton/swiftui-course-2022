@@ -50,6 +50,9 @@ struct ContentView: View {
 								AnimalListItemView(animal: animal)
 							}
 						}
+						
+						CopyrightView()
+							.modifier(CenterModifier())
 					}
 				} else {
 					ScrollView(.vertical, showsIndicators: false) {
@@ -60,6 +63,8 @@ struct ContentView: View {
 								}
 							}
 						}
+						.padding(10)
+						.animation(.easeIn, value: gridColumn)
 					}
 				}
 			}
@@ -95,5 +100,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContentView()
+			.previewDevice("iPhone 11")
 	}
 }
