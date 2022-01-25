@@ -14,7 +14,7 @@ Sections 1 & 2 contain only reading materials and are omitted.
 - [x] Section 4: Pinch
 - [ ] Section 5: **Not Yet Available**
 - [x] Section 6: Fruits
-- [ ] Section 7: Africa
+- [x] Section 7: Africa
 - [ ] Section 8: Touchdown
 - [ ] Section 9: Devote
 - [ ] Section 10: Notes
