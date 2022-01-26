@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
   
+  @EnvironmentObject var shop: Shop
+  
   var body: some View {
-    GeometryReader { geometry in
-      ZStack {
+    ZStack {
+      if !shop.showingProduct && shop.selectedProduct == nil {
         VStack(spacing: 0) {
           NavigationBarView()
             .padding(.horizontal, 15)
             .padding(.bottom)
-            .padding(.top, geometry.safeAreaInsets.top)
+            .padding(.top, getSafeAreaTop())
             .background(.white)
             .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 5)
           
@@ -32,11 +34,18 @@ struct ContentView: View {
               
               LazyVGrid(columns: gridLayout, spacing: 15) {
                 ForEach(products) { product in
-                    ProductItemView(product: product)
+                  ProductItemView(product: product)
+                    .onTapGesture {
+                      feedback.impactOccurred()
+                      withAnimation(.easeOut) {
+                        shop.showingProduct = true
+                        shop.selectedProduct = product
+                      }
+                    }
                 }
               }
               .padding(15)
-                
+              
               TitleView(title: "Brands")
               
               BrandGridView()
@@ -48,15 +57,18 @@ struct ContentView: View {
           }
         }
         .background(colorBackground.ignoresSafeArea(.all, edges: .all))
+      } else {
+        ProductDetailView()
       }
-      .ignoresSafeArea(.all, edges: .top)
     }
+    .ignoresSafeArea(.all, edges: .top)
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+      .environmentObject(Shop())
       .previewDevice("iPhone 8")
   }
 }
