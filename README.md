@@ -15,7 +15,7 @@ Sections 1 & 2 contain only reading materials and are omitted.
 - [ ] Section 5: **Not Yet Available**
 - [x] Section 6: Fruits
 - [x] Section 7: Africa
-- [ ] Section 8: Touchdown
+- [x] Section 8: Touchdown
 - [ ] Section 9: Devote
 - [ ] Section 10: Notes
 - [ ] Section 11: Developers
