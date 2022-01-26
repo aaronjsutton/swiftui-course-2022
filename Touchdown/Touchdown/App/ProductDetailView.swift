@@ -9,49 +9,54 @@ import SwiftUI
 
 struct ProductDetailView: View {
   var body: some View {
-    GeometryReader { geometry in
-      VStack(alignment: .leading, spacing: 5) {
+    VStack(alignment: .leading, spacing: 5) {
+      
+      NavigationBarDetailView()
+        .padding(.horizontal)
+        .padding(.bottom)
+        .padding(.top, getSafeAreaTop())
+      
+      HeaderDetailView()
+        .padding(.horizontal)
+      
+      TopPartDetailView()
+        .padding(.horizontal)
+        .zIndex(1)
+      
+      VStack(alignment: .center, spacing: 0) {
+        RatingsSizesDetailView()
+          .padding(.top, -20)
+          .padding(.bottom, 10)
         
-        NavigationBarDetailView()
-          .padding(.horizontal)
-          .padding(.bottom)
-          .padding(.top, geometry.safeAreaInsets.top)
+        ScrollView(.vertical, showsIndicators: false) {
+          Text(sampleProduct.description)
+            .font(.system(.body, design: .rounded))
+            .foregroundColor(.gray)
+            .multilineTextAlignment(.leading)
+        }
         
-        HeaderDetailView()
-          .padding(.horizontal)
+        QuantityFavoriteDetailView()
+          .padding(.vertical, 10)
         
-        TopPartDetailView()
-          .padding(.horizontal)
-					.zIndex(1)
-				
-				VStack(alignment: .center, spacing: 0) {
-					ScrollView(.vertical, showsIndicators: false) {
-						Text(sampleProduct.description)
-							.font(.system(.body, design: .rounded))
-							.foregroundColor(.gray)
-							.multilineTextAlignment(.leading)
-					}
-					Spacer()
-				}
-				.padding(.horizontal)
-				.background(
-					Color.white
-						.clipShape(CustomShape())
-						.padding(.top, -105)
-				)
-				
-        
-        Spacer()
+        AddToCartDetailView()
+          .padding(.bottom, 20)
       }
-      .ignoresSafeArea(.all, edges: .all)
+      .padding(.horizontal)
       .background(
-        Color(
-          red: sampleProduct.red,
-          green: sampleProduct.green,
-          blue: sampleProduct.blue
-        ).ignoresSafeArea(.all, edges: .all)
+        Color.white
+          .clipShape(CustomShape())
+          .padding(.top, -105)
       )
     }
+    .zIndex(0)
+    .ignoresSafeArea(.all, edges: .all)
+    .background(
+      Color(
+        red: sampleProduct.red,
+        green: sampleProduct.green,
+        blue: sampleProduct.blue
+      ).ignoresSafeArea(.all, edges: .all)
+    )
   }
 }
 
