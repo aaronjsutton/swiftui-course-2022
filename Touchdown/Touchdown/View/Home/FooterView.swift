@@ -13,10 +13,12 @@ struct FooterView: View {
       Text("We offer the most cutting edge, lightweight and durable football helmets in the market at affordable prices.")
         .foregroundColor(.gray)
         .multilineTextAlignment(.center)
+				.layoutPriority(2)
       
       Image("logo-lineal")
         .renderingMode(.template)
         .foregroundColor(.gray)
+				.layoutPriority(0)
       
       Text("Copyright © Aaron Sutton\n All rights reserved")
         .font(.footnote)
