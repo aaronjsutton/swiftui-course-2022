@@ -20,6 +20,9 @@
 		CCB7969D27A1F62800814733 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7969C27A1F62800814733 /* HideKeyboardExtension.swift */; };
 		CCB7969F27A1FAE000814733 /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7969E27A1FAE000814733 /* BackgroundImageView.swift */; };
 		CCB796A127A1FC7F00814733 /* NewTaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB796A027A1FC7F00814733 /* NewTaskItemView.swift */; };
+		CCB796A327A31C5500814733 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB796A227A31C5500814733 /* BlankView.swift */; };
+		CCB796A527A3217200814733 /* ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB796A427A3217200814733 /* ListRowItemView.swift */; };
+		CCB796A927A322B900814733 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB796A827A322B900814733 /* CheckboxStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		CCB7969C27A1F62800814733 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
 		CCB7969E27A1FAE000814733 /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		CCB796A027A1FC7F00814733 /* NewTaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskItemView.swift; sourceTree = "<group>"; };
+		CCB796A227A31C5500814733 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		CCB796A427A3217200814733 /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
+		CCB796A827A322B900814733 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 				CC74EBAB27A1191A00440B1F /* DevoteApp.swift */,
 				CCA7A53827A1BE07006AB26E /* Model */,
 				CCA7A53527A1BDF4006AB26E /* View */,
+				CCB796A627A322A700814733 /* Style */,
 				CCA7A53727A1BE02006AB26E /* Utility */,
 				CCA7A53627A1BDFB006AB26E /* Extension */,
 				CCA7A52E27A1BD97006AB26E /* Sound */,
@@ -107,6 +114,8 @@
 				CC74EBAD27A1191A00440B1F /* ContentView.swift */,
 				CCB7969E27A1FAE000814733 /* BackgroundImageView.swift */,
 				CCB796A027A1FC7F00814733 /* NewTaskItemView.swift */,
+				CCB796A227A31C5500814733 /* BlankView.swift */,
+				CCB796A427A3217200814733 /* ListRowItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,6 +143,14 @@
 				CC74EBB627A1191D00440B1F /* Devote.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CCB796A627A322A700814733 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				CCB796A827A322B900814733 /* CheckboxStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,9 +230,12 @@
 				CCB7969F27A1FAE000814733 /* BackgroundImageView.swift in Sources */,
 				CC74EBB527A1191D00440B1F /* Persistence.swift in Sources */,
 				CCB7969D27A1F62800814733 /* HideKeyboardExtension.swift in Sources */,
+				CCB796A327A31C5500814733 /* BlankView.swift in Sources */,
 				CC74EBAE27A1191A00440B1F /* ContentView.swift in Sources */,
+				CCB796A527A3217200814733 /* ListRowItemView.swift in Sources */,
 				CC74EBB827A1191D00440B1F /* Devote.xcdatamodeld in Sources */,
 				CC74EBAC27A1191A00440B1F /* DevoteApp.swift in Sources */,
+				CCB796A927A322B900814733 /* CheckboxStyle.swift in Sources */,
 				CCB796A127A1FC7F00814733 /* NewTaskItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

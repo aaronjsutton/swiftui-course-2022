@@ -10,9 +10,11 @@ import CoreData
 
 struct ContentView: View {
 	
+	@AppStorage("isDarkMode") private var isDarkMode: Bool = false
+	
 	@State var task: String = ""
 	@State var showNewTaskItem: Bool = false
-
+	
 	@Environment(\.managedObjectContext) private var viewContext
 	
 	@FetchRequest(
@@ -39,6 +41,34 @@ struct ContentView: View {
 			ZStack {
 				VStack {
 					
+					HStack(spacing: 10) {
+						Text("Devote")
+							.font(.system(.largeTitle, design: .rounded))
+							.fontWeight(.heavy)
+							.padding(.leading, 4)
+						
+						Spacer()
+						
+						EditButton()
+							.font(.system(size: 16, weight: .semibold, design: .rounded))
+							.padding(.horizontal, 10)
+							.frame(minWidth: 70, minHeight: 24)
+							.background(
+								Capsule().stroke(.white, lineWidth: 2)
+							)
+						
+						Button(action: {
+							isDarkMode.toggle()
+						}, label: {
+							Image(systemName: isDarkMode ? "moon.circle.fill" : "moon.circle")
+								.resizable()
+								.frame(width: 24, height: 24)
+								.font(.system(.title, design: .rounded))
+						})
+					}
+					.padding()
+					.foregroundColor(.white)
+					
 					Spacer(minLength: 80)
 					
 					Button(action: {
@@ -58,45 +88,41 @@ struct ContentView: View {
 								startPoint: .leading,
 								endPoint: .trailing
 							).clipShape(Capsule())
-							)
+						)
 						.shadow(color: Color(white: 0, opacity: 0.25), radius: 8, x: 0.0, y: 4.0)
 					
 					List {
 						ForEach(items) { item in
-							VStack(alignment: .leading) {
-								Text(item.task ?? "")
-									.font(.headline)
-									.fontWeight(.bold)
-								
-								Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-									.font(.footnote)
-									.foregroundColor(.gray)
-							}
+							ListRowItemView(item: item)
 						}
 						.onDelete(perform: deleteItems)
 					}
-					.listStyle(InsetGroupedListStyle())
-					.shadow(color: Color(white: 0, opacity: 0.3), radius: 12)
-					.padding(.vertical, 0)
-					.frame(maxWidth: 640)
+				}
+				
+				.listStyle(InsetGroupedListStyle())
+				.shadow(color: Color(white: 0, opacity: 0.3), radius: 12)
+				.padding(.vertical, 0)
+				.frame(maxWidth: 640)
+				
+				if showNewTaskItem {
+					BlankView()
+						.onTapGesture {
+							withAnimation() {
+								showNewTaskItem = false
+							}
+						}
 					
-					if showNewTaskItem {
-						NewTaskItemView()
-					}
+					NewTaskItemView(isShowing: $showNewTaskItem)
 				}
-				.onAppear() {
-					UITableView.appearance().backgroundColor = UIColor.clear
-				}
-				.navigationTitle("Daily Tasks")
-				.navigationBarTitleDisplayMode(.large)
-				.toolbar {
-					ToolbarItem(placement: .navigationBarTrailing) {
-						EditButton()
-					}
-				}
-				.background(BackgroundImageView())
-				.background(backgroundGradient.ignoresSafeArea())
 			}
+			.onAppear() {
+				UITableView.appearance().backgroundColor = UIColor.clear
+			}
+			.navigationTitle("Daily Tasks")
+			.navigationBarTitleDisplayMode(.large)
+			.navigationBarHidden(true)
+			// .background(BackgroundImageView())
+			.background(backgroundGradient.ignoresSafeArea())
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 	}
@@ -104,6 +130,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+		ContentView().preferredColorScheme(.light).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 	}
 }

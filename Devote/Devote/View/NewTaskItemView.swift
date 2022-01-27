@@ -9,9 +9,10 @@ import SwiftUI
 
 struct NewTaskItemView: View {
 	
+	@AppStorage("isDarkMode") private var isDarkMode: Bool = false
 	@Environment(\.managedObjectContext) private var viewContext
-	
 	@State var task: String = ""
+	@Binding var isShowing: Bool
 	
 	private var isButtonDisabled: Bool {
 		task.isEmpty
@@ -34,6 +35,7 @@ struct NewTaskItemView: View {
 			
 			task = ""
 			hideKeyboard()
+			isShowing = false
 		}
 	}
 	
@@ -67,7 +69,7 @@ struct NewTaskItemView: View {
 			}
 			.padding(.horizontal, 10)
 			.padding(.vertical, 20)
-			.background(Color.white)
+			.background(isDarkMode ? Color(UIColor.secondarySystemBackground) : Color.white)
 			.cornerRadius(16)
 			.shadow(color: Color(white: 0, opacity: 0.65), radius: 24)
 		}
@@ -77,8 +79,9 @@ struct NewTaskItemView: View {
 
 struct NewTaskItemView_Previews: PreviewProvider {
 	static var previews: some View {
-		NewTaskItemView()
+		NewTaskItemView(isShowing: .constant(true))
 			.previewDevice("iPhone 12 Pro")
+			.preferredColorScheme(.dark)
 			.background(Color.gray.edgesIgnoringSafeArea(.all))
 	}
 }
