@@ -21,8 +21,6 @@ struct ContentView: View {
 	
 	private var items: FetchedResults<Item>
 	
-	
-	
 	private func deleteItems(offsets: IndexSet) {
 		withAnimation {
 			offsets.map { items[$0] }.forEach(viewContext.delete)
@@ -40,6 +38,29 @@ struct ContentView: View {
 		NavigationView {
 			ZStack {
 				VStack {
+					
+					Spacer(minLength: 80)
+					
+					Button(action: {
+						showNewTaskItem = true
+					}, label: {
+						Image(systemName: "plus.circle")
+							.font(.system(size: 30, weight: .semibold, design: .rounded))
+						Text("New Task")
+							.font(.system(size: 24, weight: .bold, design: .rounded))
+					})
+						.foregroundColor(.white)
+						.padding(.horizontal, 20)
+						.padding(.vertical, 15)
+						.background(
+							LinearGradient(
+								gradient: Gradient(colors: [Color.pink, Color.blue]),
+								startPoint: .leading,
+								endPoint: .trailing
+							).clipShape(Capsule())
+							)
+						.shadow(color: Color(white: 0, opacity: 0.25), radius: 8, x: 0.0, y: 4.0)
+					
 					List {
 						ForEach(items) { item in
 							VStack(alignment: .leading) {
@@ -58,6 +79,10 @@ struct ContentView: View {
 					.shadow(color: Color(white: 0, opacity: 0.3), radius: 12)
 					.padding(.vertical, 0)
 					.frame(maxWidth: 640)
+					
+					if showNewTaskItem {
+						NewTaskItemView()
+					}
 				}
 				.onAppear() {
 					UITableView.appearance().backgroundColor = UIColor.clear
